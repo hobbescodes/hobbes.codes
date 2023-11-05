@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src"
   },
   "dependencies": {
+    "geist": "^1.0.0",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18"

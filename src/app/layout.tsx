@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { GeistSans } from 'geist/font'
 
 import { Layout } from 'components/layout'
 
@@ -6,8 +6,6 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'hobbescodes',
@@ -23,7 +21,7 @@ const RootLayout = ({
 }: Props) => {
   return (
     <html lang="en">
-      <body className={inter.className}><Layout>{children}</Layout></body>
+      <body className={GeistSans.className}><Layout>{children}</Layout></body>
     </html>
   )
 }
