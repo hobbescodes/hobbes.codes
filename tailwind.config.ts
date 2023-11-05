@@ -6,7 +6,11 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateRows: {
+        layout: "auto 1fr auto",
+      },
+    },
   },
   plugins: [],
 };

@@ -1,5 +1,7 @@
 import { Inter } from 'next/font/google'
 
+import { Layout } from 'components/layout'
+
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
@@ -21,7 +23,7 @@ const RootLayout = ({
 }: Props) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}><Layout>{children}</Layout></body>
     </html>
   )
 }
