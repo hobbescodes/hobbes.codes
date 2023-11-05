@@ -1,29 +1,38 @@
-import { Inter } from 'next/font/google'
+import { clsx } from "clsx";
+import { GeistSans } from "geist/font";
 
-import type { Metadata } from 'next'
-import type { ReactNode } from 'react'
+import { Layout } from "components/layout";
+import { ThemeProvider } from "components/providers";
 
-import './globals.css'
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'hobbescodes',
-  description: 'hobbescodes personal website',
-}
+  title: "hobbescodes",
+  description: "hobbescodes personal website",
+};
 
 interface Props {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
-const RootLayout = ({
-  children,
-}: Props) => {
+const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={clsx(
+          GeistSans.className,
+          "bg-background-primary text-foreground-primary",
+        )}
+      >
+        <ThemeProvider>
+          <Layout>{children}</Layout>
+        </ThemeProvider>
+      </body>
     </html>
-  )
-}
+  );
+};
 
-export default RootLayout
+export default RootLayout;
