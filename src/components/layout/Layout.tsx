@@ -1,3 +1,5 @@
+import { Footer } from "components/layout";
+
 import type { ReactNode } from "react";
 
 interface Props {
@@ -10,7 +12,7 @@ const Layout = ({ children }: Props) => (
       <main className="mx-auto flex w-full max-w-6xl items-center justify-center">
         {children}
       </main>
-      <p>Footer</p>
+      <Footer />
     </div>
   );
 
