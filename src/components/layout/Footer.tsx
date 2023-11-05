@@ -3,7 +3,7 @@ const Footer = () => (
         <p className="opacity-40 py-4">
           &copy; {new Date().getFullYear()} hobbescodes
         </p>
-      </footer>
+    </footer>
 )
 
 export default Footer

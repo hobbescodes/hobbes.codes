@@ -1,3 +1,4 @@
+import { clsx } from "clsx"
 import { GeistSans } from 'geist/font'
 
 import { Layout } from 'components/layout'
@@ -23,7 +24,7 @@ const RootLayout = ({
 }: Props) => {
   return (
     <html lang="en">
-      <body className={GeistSans.className}><ThemeProvider><Layout>{children}</Layout></ThemeProvider></body>
+      <body className={clsx(GeistSans.className, "bg-background-primary text-foreground-primary")}><ThemeProvider><Layout>{children}</Layout></ThemeProvider></body>
     </html>
   )
 }
