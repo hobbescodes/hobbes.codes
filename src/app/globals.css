@@ -7,11 +7,13 @@
     --color-background-primary: 250 250 250;
     --color-background-secondary: 244 244 245;
     --color-foreground-primary: 9 9 11;
+    --color-accent-subtle: 219 238 254
   }
 
   .dark {
     --color-background-primary: 9 9 11;
     --color-background-secondary: 24 24 27;
     --color-foreground-primary: 250 250 250;
+    --color-accent-subtle: 23 44 84;
   }
 }

@@ -22,7 +22,7 @@ const ThemeSwitch = () => {
     <Expand
       onToggle={toggleTheme}
       toggled={theme === "light"}
-      className="rounded-md p-3 hover:text-brand-primary-700 dark:hover:text-brand-primary-300"
+      className="rounded-md p-3 hover:text-brand-primary-500 transition-colors duration-300"
     />
   );
 };
