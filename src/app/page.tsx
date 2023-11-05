@@ -1,9 +1,7 @@
 const HomePage = () => {
   return (
-    <div className="flex flex-col items-center justify-center">
-      Home Page
-    </div>
-  )
-}
+    <div className="flex flex-col items-center justify-center">Home Page</div>
+  );
+};
 
-export default HomePage
+export default HomePage;
