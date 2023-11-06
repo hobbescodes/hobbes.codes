@@ -7,7 +7,7 @@ const HomePage = () => {
         <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-foreground-primary sm:text-6xl">
           Welcome! I am <span className="text-brand-primary-500">hobbescodes</span>
         </h1>
-        <h2 className="text-accent-emphasized/80 text-xl">Software Engineer</h2>
+        <h2 className="text-xl text-accent-emphasized/80">Software Engineer</h2>
         <div className="mt-6 max-w-xl">
           <p className="relative text-lg leading-8 text-foreground-primary">
             I am a fullstack developer with a passion for building things. I am currently the CCO of{" "}
