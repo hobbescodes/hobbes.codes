@@ -3,7 +3,7 @@ import { Image } from "components/core";
 const HomePage = () => {
   return (
     <div className="mx-8 flex w-full flex-col items-center justify-center gap-8 lg:flex-row">
-      <div className="flex flex-col gap-4 lg:mb-20">
+      <div className="flex flex-col gap-4 duration-1000 animate-in lg:mb-20 lg:slide-in-from-bottom-20">
         <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-foreground-primary sm:text-6xl">
           Welcome! I am <span className="text-brand-primary-500">hobbescodes</span>
         </h1>
@@ -16,7 +16,7 @@ const HomePage = () => {
           </p>
         </div>
       </div>
-      <div className="relative aspect-[6/5] w-full max-w-lg overflow-hidden rounded-2xl shadow-md shadow-brand-primary-500/40 lg:mt-20">
+      <div className="relative aspect-[6/5] w-full max-w-lg overflow-hidden rounded-2xl shadow-md shadow-brand-primary-500/40 duration-1000 animate-in lg:mt-20 lg:slide-in-from-top-20">
         <Image src="/hobbescodes.webp" alt="" className="object-cover" priority fill />
       </div>
     </div>
