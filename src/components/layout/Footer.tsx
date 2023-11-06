@@ -16,7 +16,7 @@ const Footer = () => (
         </Link>
       ))}
     </div>
-    <p className="opacity-40">&copy; {new Date().getFullYear()} hobbescodes</p>
+    <p className="text-foreground-muted">&copy; {new Date().getFullYear()} hobbescodes</p>
   </footer>
 );
 

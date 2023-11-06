@@ -51,7 +51,7 @@ const Sidebar = () => {
                   <div className="group flex w-fit flex-col">
                     <Dialog.Title className="text-xl font-bold">Navigation</Dialog.Title>
 
-                    <Dialog.Description className="text-sm text-gray-500">
+                    <Dialog.Description className="text-foreground-muted text-sm">
                       Feel free to explore the site!
                     </Dialog.Description>
                   </div>

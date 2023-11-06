@@ -19,6 +19,7 @@ const config: Config = {
         },
         foreground: {
           primary: "rgb(var(--color-foreground-primary) / <alpha-value>)",
+          muted: "rgb(var(--color-foreground-muted) / <alpha-value>)",
         },
         accent: {
           subtle: "hsl(var(--color-accent-subtle) / <alpha-value>)",
