@@ -7,6 +7,7 @@ import { useIsClient } from "usehooks-ts";
 
 import { ApplicationLinks } from "components/layout";
 import { useLayoutStore } from "lib/store";
+import { useIsTablet } from "lib/hooks";
 
 const Sidebar = () => {
   const { isSidebarOpen, onCloseSidebar, onOpenSidebar } = useLayoutStore(
@@ -17,6 +18,8 @@ const Sidebar = () => {
     }),
   );
 
+  const isTablet = useIsTablet();
+
   const isClient = useIsClient();
 
   if (!isClient) return null;
@@ -25,28 +28,29 @@ const Sidebar = () => {
     <Dialog.Root open={isSidebarOpen} onOpen={onOpenSidebar} onClose={onCloseSidebar}>
       {({ isOpen }) => (
         <>
-          <Dialog.Trigger className="rounded-md p-3 hover:bg-accent-subtle md:hidden">
+          <Dialog.Trigger className="rounded-md p-3 transition-colors duration-300 hover:bg-accent-subtle md:hidden">
             <MenuIcon />
           </Dialog.Trigger>
           <Portal>
             <Dialog.Backdrop className="z-backdrop fixed inset-0 bg-black/50 backdrop-blur-md transition-transform duration-1000" />
-            <Dialog.Container className="z-dialog fixed bottom-0 right-0 top-0 flex w-full items-center justify-center sm:w-80">
+            <Dialog.Container className="z-dialog fixed bottom-0 right-0 top-[15%] flex w-full items-center justify-center sm:top-0 sm:w-80">
               <Dialog.Content
                 className={clsx(
-                  "h-full w-full items-center justify-center overflow-hidden overflow-y-auto bg-background-primary pb-4 sm:pb-10",
-                  isOpen
-                    ? "animate-in slide-in-from-right duration-500"
-                    : "animate-out slide-out-to-right duration-200",
+                  "h-full w-full items-center justify-center overflow-hidden overflow-y-auto rounded-t-xl border border-background-secondary bg-background-primary sm:rounded-none",
+                  isOpen ? "animate-in duration-500" : "animate-out duration-200",
+                  isTablet
+                    ? "slide-in-from-right slide-out-to-right"
+                    : "slide-in-from-bottom slide-out-to-bottom",
                 )}
               >
-                <Dialog.CloseTrigger className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md p-1 transition hover:bg-accent-subtle">
+                <Dialog.CloseTrigger className="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md p-1 transition-colors duration-300 hover:bg-accent-subtle">
                   <CloseIcon />
                 </Dialog.CloseTrigger>
 
                 <div className="my-2 flex flex-col p-4">
                   <div className="group flex w-fit flex-col">
                     <Dialog.Title className="text-xl font-bold group-hover:opacity-80">
-                      Navigation Sidebar
+                      Navigation
                     </Dialog.Title>
 
                     <Dialog.Description className="text-sm text-gray-500">
