@@ -49,9 +49,7 @@ const Sidebar = () => {
 
                 <div className="my-2 flex flex-col p-4">
                   <div className="group flex w-fit flex-col">
-                    <Dialog.Title className="text-xl font-bold group-hover:opacity-80">
-                      Navigation
-                    </Dialog.Title>
+                    <Dialog.Title className="text-xl font-bold">Navigation</Dialog.Title>
 
                     <Dialog.Description className="text-sm text-gray-500">
                       Feel free to explore the site!

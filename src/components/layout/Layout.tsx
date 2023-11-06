@@ -18,11 +18,11 @@ const Layout = ({ children }: Props) => {
       <Header />
       <div className="relative flex h-full w-full items-center justify-center">
         <div
-          className="clip-path-background absolute inset-y-0 right-0 -z-10 w-full bg-accent-subtle/20"
+          className="clip-path-background z-background absolute inset-y-0 right-0 w-full bg-accent-subtle/20"
           aria-hidden="true"
         />
         <div
-          className="clip-path-border absolute inset-y-0 right-0 -z-10 -mt-0.5 w-full bg-accent-subtle"
+          className="clip-path-border z-background absolute inset-y-0 right-0 -mt-0.5 w-full bg-accent-subtle"
           aria-hidden="true"
         />
         <main className="mx-auto flex w-full max-w-6xl items-center justify-center">

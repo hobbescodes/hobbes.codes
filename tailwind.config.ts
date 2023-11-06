@@ -45,6 +45,7 @@ const config: Config = {
       },
       zIndex: {
         backdrop: "60",
+        background: "-10",
         header: "50",
         dialog: "70",
       },
