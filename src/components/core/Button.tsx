@@ -29,9 +29,9 @@ const Button = ({
   const baseClasses = "flex font-medium items-center rounded-md transition-colors duration-300";
 
   const sizeClasses: Record<Size, string> = {
-    sm: "px-2 py-1 text-xs",
-    md: "px-3 py-2 text-sm",
-    lg: "px-5 py-3 text-base",
+    sm: "px-2 py-1 text-sm",
+    md: "px-3 py-2",
+    lg: "px-5 py-3 text-lg",
     xl: "px-5 py-3 text-lg",
   };
   const variantClasses: Record<Variant, string> = {
