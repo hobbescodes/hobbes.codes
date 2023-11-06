@@ -33,10 +33,13 @@ const config: Config = {
             900: "#1f4789",
             950: "#172c54",
           },
-        }
+        },
       },
       gridTemplateRows: {
         layout: "auto 1fr auto",
+      },
+      zIndex: {
+        header: "50",
       },
     },
   },
