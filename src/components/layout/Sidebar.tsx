@@ -6,8 +6,8 @@ import { FiMenu as MenuIcon, FiX as CloseIcon } from "react-icons/fi";
 import { useIsClient } from "usehooks-ts";
 
 import { ApplicationLinks } from "components/layout";
-import { useLayoutStore } from "lib/store";
 import { useIsTablet } from "lib/hooks";
+import { useLayoutStore } from "lib/store";
 
 const Sidebar = () => {
   const { isSidebarOpen, onCloseSidebar, onOpenSidebar } = useLayoutStore(
