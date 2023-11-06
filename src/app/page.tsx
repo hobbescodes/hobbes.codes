@@ -10,7 +10,7 @@ const HomePage = () => {
         <h2 className="text-xl text-accent-emphasized/80">Software Engineer</h2>
         <div className="mt-6 max-w-xl">
           <p className="relative text-lg leading-8 text-foreground-primary">
-            I am a fullstack developer with a passion for building things. I am currently the CCO of{" "}
+            I am a fullstack developer with a passion for building things. I am currently the COO of{" "}
             <Link
               href="https://animareflection.com/"
               isExternal
