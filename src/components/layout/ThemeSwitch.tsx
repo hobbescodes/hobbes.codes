@@ -13,8 +13,7 @@ const ThemeSwitch = () => {
   const isClient = useIsClient();
   const { theme, setTheme } = useTheme();
 
-  const toggleTheme = () =>
-    theme === "dark" ? setTheme("light") : setTheme("dark");
+  const toggleTheme = () => (theme === "dark" ? setTheme("light") : setTheme("dark"));
 
   if (!isClient) return null;
 
@@ -22,7 +21,7 @@ const ThemeSwitch = () => {
     <Expand
       onToggle={toggleTheme}
       toggled={theme === "light"}
-      className="rounded-md p-3 transition-colors duration-300 hover:text-brand-primary-500"
+      className="rounded-md p-3 transition-opacity duration-300 hover:opacity-60"
     />
   );
 };

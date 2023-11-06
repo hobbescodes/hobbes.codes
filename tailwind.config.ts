@@ -1,3 +1,5 @@
+import animate from "tailwindcss-animate";
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -33,13 +35,18 @@ const config: Config = {
             900: "#1f4789",
             950: "#172c54",
           },
-        }
+        },
       },
       gridTemplateRows: {
         layout: "auto 1fr auto",
       },
+      zIndex: {
+        backdrop: "60",
+        header: "50",
+        dialog: "70",
+      },
     },
   },
-  plugins: [],
+  plugins: [animate],
 };
 export default config;

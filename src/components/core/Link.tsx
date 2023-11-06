@@ -15,13 +15,7 @@ export interface Props extends LinkProps {
 /**
  * Link (application-internal or external).
  */
-const Link = ({
-  isDisabled,
-  isExternal,
-  className,
-  children,
-  ...rest
-}: Props) =>
+const Link = ({ isDisabled, isExternal, className, children, ...rest }: Props) =>
   // forward children if disabled
   // NB: fragment wrap is intended to prevent return type error
   isDisabled ? (
