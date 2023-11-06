@@ -13,8 +13,7 @@ const ThemeSwitch = () => {
   const isClient = useIsClient();
   const { theme, setTheme } = useTheme();
 
-  const toggleTheme = () =>
-    theme === "dark" ? setTheme("light") : setTheme("dark");
+  const toggleTheme = () => (theme === "dark" ? setTheme("light") : setTheme("dark"));
 
   if (!isClient) return null;
 

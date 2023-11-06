@@ -21,12 +21,7 @@ interface Props {
 const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
-      <body
-        className={clsx(
-          GeistSans.className,
-          "bg-background-primary text-foreground-primary",
-        )}
-      >
+      <body className={clsx(GeistSans.className, "bg-background-primary text-foreground-primary")}>
         <ThemeProvider>
           <Layout>{children}</Layout>
         </ThemeProvider>

@@ -1,5 +1,5 @@
 import { Link } from "components/core";
-import { ApplicationLinks, ThemeSwitch } from "components/layout";
+import { ApplicationLinks, Sidebar, ThemeSwitch } from "components/layout";
 
 const Header = () => (
   <div className="z-header sticky top-0 flex w-full items-center justify-between backdrop-blur-md">
@@ -8,6 +8,7 @@ const Header = () => (
     </Link>
     <div className="flex gap-2">
       <ThemeSwitch />
+      <Sidebar />
       <ApplicationLinks />
     </div>
   </div>

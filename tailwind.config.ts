@@ -1,3 +1,5 @@
+import animate from "tailwindcss-animate";
+
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -39,10 +41,12 @@ const config: Config = {
         layout: "auto 1fr auto",
       },
       zIndex: {
+        backdrop: "60",
         header: "50",
+        dialog: "70",
       },
     },
   },
-  plugins: [],
+  plugins: [animate],
 };
 export default config;

@@ -6,27 +6,32 @@ import { usePathname } from "next/navigation";
 import { Link } from "components/core";
 import { NAVIGATION_LINKS } from "lib/data";
 
-const ApplicationLinks = () => {
+interface Props {
+  sidebar?: boolean;
+}
+
+const ApplicationLinks = ({ sidebar }: Props) => {
   const pathname = usePathname();
 
   return (
-    <div className="hidden gap-px md:flex">
-      {Object.entries(NAVIGATION_LINKS.application).map(
-        ([key, { label, href }]) => (
+    <div className={sidebar ? "flex flex-col gap-2 md:hidden" : "hidden gap-px md:flex"}>
+      {Object.entries(NAVIGATION_LINKS.application).map(([key, { label, href }]) => {
+        const isActiveRoute = pathname.includes(href as string);
+
+        return (
           <Link
             key={key}
             href={href}
             className={clsx(
-              "p-3 transition-colors duration-300 hover:text-brand-primary-500",
-              pathname.includes(href as string)
-                ? "text-brand-primary-500"
-                : "text-foreground-primary",
+              "flex justify-center rounded-md px-3 py-2 transition-colors duration-300",
+              sidebar ? "mx-2" : "mx-1",
+              isActiveRoute ? "bg-accent-subtle" : "hover:bg-background-secondary",
             )}
           >
             {label}
           </Link>
-        ),
-      )}
+        );
+      })}
     </div>
   );
 };
