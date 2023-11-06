@@ -9,12 +9,12 @@ const HomePage = () => {
         </h1>
         <h2 className="text-accent-emphasized/80 text-xl">Software Engineer</h2>
         <div className="mt-6 max-w-xl">
-          <p className="text-lg leading-8 text-foreground-primary">
+          <p className="relative text-lg leading-8 text-foreground-primary">
             I am a fullstack developer with a passion for building things. I am currently the CCO of{" "}
             <Link
               href="https://animareflection.com/"
               isExternal
-              className="hover:animate-wiggle inline-flex text-brand-primary-500 transition-transform duration-300"
+              className="relative text-brand-primary-500 before:absolute before:bottom-[-2px] before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:rounded-md before:bg-brand-primary-500 before:transition-transform before:duration-300 before:ease-in-out before:content-[''] hover:before:origin-left hover:before:scale-x-100"
             >
               Anima Reflection LLC
             </Link>
