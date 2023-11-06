@@ -15,7 +15,7 @@ const ThemeSwitch = () => {
 
   const toggleTheme = () => (theme === "dark" ? setTheme("light") : setTheme("dark"));
 
-  if (!isClient) return null;
+  if (!isClient) return <div className="h-8 w-10 p-3" />;
 
   return (
     <Expand

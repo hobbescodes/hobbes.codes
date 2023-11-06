@@ -7,63 +7,70 @@
  * NB: this is not an exhaustive list. For example, the standard 'Permissions-Policy' header is not set.
  */
 const headers = async () => [
-    {
-      // match all paths, including "/" (https://github.com/vercel/next.js/discussions/17991#discussioncomment-112028)
-      source: "/(.*?)",
-      headers: [
-        // enable DNS prefetching (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#x-dns-prefetch-control)
-        {
-          key: "X-DNS-Prefetch-Control",
-          value: "on",
-        },
-        // enforce HTTPS (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#strict-transport-security)
-        // NB: many hosting platforms (including e.g. Vercel) automatically apply this header; it is included for redundancy
-        {
-          key: "Strict-Transport-Security",
-          value: "max-age=63072000; includeSubDomains; preload",
-        },
-        // CSP (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#content-security-policy)
-        {
-          key: "Content-Security-Policy",
-          value: "frame-ancestors 'self'",
-        },
-        // prevent browser MIME-sniffing if `Content-Type` header not explicitly set (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#x-content-type-options)
-        // NB: superseded by CSP 'frame-ancestors', included here for backwards compatibility
-        {
-          key: "X-Content-Type-Options",
-          value: "nosniff",
-        },
-        // prevent loading when reflected XSS attack detected (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#x-xss-protection)
-        // NB: unnecessary with sufficiently strict CSP ('unsafe-inline'), included here for backwards compatibility
-        {
-          key: "X-XSS-Protection",
-          value: "1; mode=block",
-        },
-        {
-          // control iframe rendering ability (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#x-frame-options)
-          // NB: this directive's 'ALLOW-FROM' option is deprecated in favor of CSP 'frame-ancestors', included here for backwards compatibility
-          key: "X-Frame-Options",
-          value: "SAMEORIGIN",
-        },
-        // only send origin in 'Referer' header of cross-origin requests (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#referrer-policy)
-        {
-          key: "Referrer-Policy",
-          value: "strict-origin-when-cross-origin",
-        },
-      ],
-    },
-  ];
-  
-  /**
-   * @type {import('next').NextConfig}
-   */
-  const nextConfig = {
-    reactStrictMode: true,
-    output: "standalone",
-    // disable 'X-Powered-By' header (https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html#x-powered-by)
-    poweredByHeader: false,
-    headers,
-  };
-  
-  export default nextConfig;
-  
+  {
+    // match all paths, including "/" (https://github.com/vercel/next.js/discussions/17991#discussioncomment-112028)
+    source: "/(.*?)",
+    headers: [
+      // enable DNS prefetching (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#x-dns-prefetch-control)
+      {
+        key: "X-DNS-Prefetch-Control",
+        value: "on",
+      },
+      // enforce HTTPS (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#strict-transport-security)
+      // NB: many hosting platforms (including e.g. Vercel) automatically apply this header; it is included for redundancy
+      {
+        key: "Strict-Transport-Security",
+        value: "max-age=63072000; includeSubDomains; preload",
+      },
+      // CSP (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#content-security-policy)
+      {
+        key: "Content-Security-Policy",
+        value: "frame-ancestors 'self'",
+      },
+      // prevent browser MIME-sniffing if `Content-Type` header not explicitly set (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#x-content-type-options)
+      // NB: superseded by CSP 'frame-ancestors', included here for backwards compatibility
+      {
+        key: "X-Content-Type-Options",
+        value: "nosniff",
+      },
+      // prevent loading when reflected XSS attack detected (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#x-xss-protection)
+      // NB: unnecessary with sufficiently strict CSP ('unsafe-inline'), included here for backwards compatibility
+      {
+        key: "X-XSS-Protection",
+        value: "1; mode=block",
+      },
+      {
+        // control iframe rendering ability (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#x-frame-options)
+        // NB: this directive's 'ALLOW-FROM' option is deprecated in favor of CSP 'frame-ancestors', included here for backwards compatibility
+        key: "X-Frame-Options",
+        value: "SAMEORIGIN",
+      },
+      // only send origin in 'Referer' header of cross-origin requests (https://nextjs.org/docs/pages/api-reference/next-config-js/headers#referrer-policy)
+      {
+        key: "Referrer-Policy",
+        value: "strict-origin-when-cross-origin",
+      },
+    ],
+  },
+];
+
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+  reactStrictMode: true,
+  output: "standalone",
+  // disable 'X-Powered-By' header (https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html#x-powered-by)
+  poweredByHeader: false,
+  headers,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
+  },
+};
+
+export default nextConfig;
