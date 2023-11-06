@@ -1,4 +1,4 @@
-import { Image } from "components/core";
+import { Image, Link } from "components/core";
 
 const HomePage = () => {
   return (
@@ -10,9 +10,16 @@ const HomePage = () => {
         <h2 className="text-accent-emphasized/80 text-xl">Software Engineer</h2>
         <div className="mt-6 max-w-xl">
           <p className="text-lg leading-8 text-foreground-primary">
-            I am a fullstack developer with a passion for building things. I am currently the CCO of
-            Anima Reflection LLC. My primary focus is on smart contract development, but I have
-            extensive experience with web development as well.
+            I am a fullstack developer with a passion for building things. I am currently the CCO of{" "}
+            <Link
+              href="https://animareflection.com/"
+              isExternal
+              className="hover:animate-wiggle inline-flex text-brand-primary-500 transition-transform duration-300"
+            >
+              Anima Reflection LLC
+            </Link>
+            . My primary focus is on smart contract development, but I have extensive experience
+            with web development as well.
           </p>
         </div>
       </div>
