@@ -21,3 +21,9 @@
     --color-accent-emphasized: 324deg 96% 90%;
   }
 }
+
+@layer utilities {
+  .animate-underline {
+    @apply before:absolute before:bottom-[-2px] before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:rounded-md before:bg-brand-primary-500 before:transition-transform before:delay-100 before:duration-300 before:ease-in-out before:content-[''] hover:before:origin-left hover:before:scale-x-100;
+  }
+}
