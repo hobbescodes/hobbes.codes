@@ -9,7 +9,7 @@ const Footer = () => (
           key={key}
           href={href}
           isExternal
-          className="p-2 text-foreground-primary transition-colors duration-300 hover:text-brand-primary-500"
+          className="p-2 text-foreground-primary transition-opacity duration-300 hover:opacity-60"
         >
           <span className="sr-only">{label}</span>
           {Icon && <Icon className="h-4 w-4" />}

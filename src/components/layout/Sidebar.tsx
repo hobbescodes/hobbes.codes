@@ -58,9 +58,9 @@ const Sidebar = () => {
                     </Dialog.Description>
                   </div>
 
-                  <div className="mt-4 h-px bg-accent-subtle" />
+                  <div className="my-4 h-px bg-accent-subtle" />
+                  <ApplicationLinks sidebar />
                 </div>
-                <ApplicationLinks sidebar />
               </Dialog.Content>
             </Dialog.Container>
           </Portal>
