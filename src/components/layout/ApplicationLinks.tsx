@@ -25,7 +25,9 @@ const ApplicationLinks = ({ sidebar }: Props) => {
             className={clsx(
               "flex justify-center rounded-md px-3 py-2 transition-colors duration-300",
               sidebar ? "mx-2" : "mx-1",
-              isActiveRoute ? "bg-accent-subtle" : "hover:bg-background-secondary",
+              isActiveRoute
+                ? "bg-accent-subtle"
+                : "hover:bg-accent-emphasized hover:text-accent-subtle",
             )}
           >
             {label}
