@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       clipPath: {
-        background: "polygon(66% 0, 100% 0, 100% 100%, 31% 100%)",
-        border: "polygon(66% 0, 66% 0, 31.01% 100%, 31% 100%)",
+        background: "polygon(66.66% 0, 100% 0, 100% 100%, 33.33% 100%)",
+        border: "polygon(66.66% 0, 66.72% 0, 33.34% 100%, 33.33% 100%)",
       },
       colors: {
         background: {

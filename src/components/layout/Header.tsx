@@ -2,7 +2,8 @@ import { Link } from "components/core";
 import { ApplicationLinks, Sidebar, ThemeSwitch } from "components/layout";
 
 const Header = () => (
-  <div className="sticky top-0 z-header flex w-full items-center justify-between bg-accent-subtle p-3 backdrop-blur-md">
+  <div className="sticky top-0 z-header flex w-full items-center justify-between bg-accent-subtle/20 p-3 backdrop-blur-md">
+    <div className="absolute bottom-0 left-0 h-px w-2/3 bg-accent-subtle" />
     <div className="flex-1 md:flex-none">
       <Link
         href="/"
