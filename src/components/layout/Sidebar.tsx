@@ -28,7 +28,7 @@ const Sidebar = () => {
     <Dialog.Root open={isSidebarOpen} onOpen={onOpenSidebar} onClose={onCloseSidebar}>
       {({ isOpen }) => (
         <>
-          <Dialog.Trigger className="rounded-md p-3 transition-colors duration-300 hover:bg-background-secondary md:hidden">
+          <Dialog.Trigger className="rounded-md p-3 transition-colors duration-300 hover:bg-brand-primary-300 dark:hover:bg-brand-primary-900 md:hidden">
             <MenuIcon />
           </Dialog.Trigger>
           <Portal>
