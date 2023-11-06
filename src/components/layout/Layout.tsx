@@ -14,7 +14,7 @@ const Layout = ({ children }: Props) => {
   useCloseSidebarOnWindowResize();
 
   return (
-    <div className="grid min-h-screen grid-rows-layout p-2">
+    <div className="grid min-h-screen grid-rows-layout">
       <Header />
       <main className="mx-auto flex w-full max-w-6xl items-center justify-center">{children}</main>
       <Footer />

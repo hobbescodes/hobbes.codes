@@ -3,10 +3,7 @@ import animate from "tailwindcss-animate";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: "class",
   theme: {
     extend: {
@@ -20,6 +17,7 @@ const config: Config = {
         },
         accent: {
           subtle: "rgb(var(--color-accent-subtle) / <alpha-value>)",
+          emphasized: "rgb(var(--color-accent-emphasized) / <alpha-value>)",
         },
         brand: {
           primary: {
