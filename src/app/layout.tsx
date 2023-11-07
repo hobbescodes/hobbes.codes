@@ -10,8 +10,31 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "hobbescodes",
-  description: "hobbescodes personal website",
+  metadataBase: new URL("https://hobbes.codes"),
+  title: {
+    default: "hobbescodes",
+    template: "%s | hobbescodes",
+  },
+  description: "Develop. Ship. Repeat.",
+  openGraph: {
+    title: "hobbescodes",
+    description: "Develop. Ship. Repeat.",
+    url: "https://hobbes.codes",
+    siteName: "hobbescodes",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 interface Props {
