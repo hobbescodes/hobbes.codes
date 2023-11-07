@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",
+        blink: "blink 1s steps(2) 3",
       },
       clipPath: {
         background: "polygon(66.66% 0, 100% 0, 100% 100%, 33.33% 100%)",
@@ -51,6 +52,10 @@ const config: Config = {
         wiggle: {
           "0%, 100%": { transform: "rotate(-5deg)" },
           "50%": { transform: "rotate(5deg)" },
+        },
+        blink: {
+          "0%, 100%": { visibility: "visible" },
+          "50%": { visibility: "hidden" },
         },
       },
       zIndex: {

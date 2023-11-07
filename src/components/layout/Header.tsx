@@ -7,10 +7,10 @@ const Header = () => (
     <div className="flex-1 md:flex-none">
       <Link href="/" className="w-fit">
         <Button className="p-3 text-xl font-bold hover:text-brand-primary-500">
-          <span className="hidden md:inline">{"<"}</span>h
+          <span className="hidden md:inline">&lt; </span>h
           <span className="md:hidden">obbescodes</span>
-          <span className="hidden animate-[wiggle_1.5s_linear] md:inline">_</span>
-          <span className="hidden md:inline">{">"}</span>
+          <span className="animate-blink hidden md:inline">_</span>
+          <span className="hidden md:inline"> &gt;</span>
         </Button>
       </Link>
     </div>
