@@ -23,6 +23,7 @@ const config: Config = {
         },
         foreground: {
           primary: "rgb(var(--color-foreground-primary) / <alpha-value>)",
+          accent: "rgb(var(--color-foreground-accent) / <alpha-value>)",
           muted: "rgb(var(--color-foreground-muted) / <alpha-value>)",
         },
         accent: {

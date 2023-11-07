@@ -7,7 +7,7 @@ const button = cva({
   base: "flex font-medium items-center rounded-md transition-colors duration-300",
   variants: {
     variant: {
-      primary: "gap-2 bg-brand-primary-500 hover:bg-brand-primary-500/80 text-foreground-primary",
+      primary: "gap-2 bg-brand-primary-500 hover:bg-brand-primary-500/80 text-foreground-accent",
       outline:
         "gap-2 border border-brand-primary-500 bg-inherit dark:hover:bg-brand-primary-950 hover:bg-brand-primary-50 text-brand-primary-500",
       unset: null,
