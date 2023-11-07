@@ -1,5 +1,7 @@
+import { notFound } from "next/navigation";
+
 const AboutPage = () => {
-  return <div className="flex flex-col items-center justify-center">About Page</div>;
+  return notFound();
 };
 
 export default AboutPage;
