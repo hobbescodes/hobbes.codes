@@ -14,7 +14,7 @@ const HomePage = () => {
             <Link
               href="https://animareflection.com/"
               isExternal
-              className="relative text-brand-primary-500 before:absolute before:bottom-[-2px] before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:rounded-md before:bg-brand-primary-500 before:transition-transform before:duration-300 before:ease-in-out before:content-[''] hover:before:origin-left hover:before:scale-x-100"
+              className="animate-underline relative text-brand-primary-500"
             >
               Anima Reflection LLC
             </Link>
@@ -23,8 +23,14 @@ const HomePage = () => {
           </p>
         </div>
       </div>
-      <div className="relative aspect-[6/5] w-full max-w-lg overflow-hidden rounded-2xl shadow-md shadow-brand-primary-500/40 duration-1000 animate-in lg:mt-20 lg:slide-in-from-top-20">
-        <Image src="/hobbescodes.webp" alt="" className="object-cover" priority fill />
+      <div className="relative aspect-[6/5] w-full max-w-lg overflow-hidden rounded-2xl shadow-lg duration-1000 animate-in lg:mt-20 lg:slide-in-from-top-20">
+        <Image
+          src="/hobbescodes.webp"
+          alt="hobbes on the grind"
+          className="object-cover"
+          priority
+          fill
+        />
       </div>
     </div>
   );

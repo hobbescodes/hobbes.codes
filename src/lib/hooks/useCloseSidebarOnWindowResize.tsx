@@ -18,7 +18,7 @@ const useCloseSidebarOnWindowResize = () => {
     if (!showSidebar && isSidebarOpen) {
       onCloseSidebar();
     }
-  }, [showSidebar, isSidebarOpen]);
+  }, [isSidebarOpen, onCloseSidebar, showSidebar]);
 };
 
 export default useCloseSidebarOnWindowResize;
