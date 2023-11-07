@@ -1,10 +1,10 @@
 "use client";
 
-import { clsx } from "clsx";
 import { usePathname } from "next/navigation";
 
 import { Button, Link } from "components/core";
 import { NAVIGATION_LINKS } from "lib/data";
+import { cx } from "lib/util";
 
 interface Props {
   sidebar?: boolean;
@@ -21,7 +21,8 @@ const ApplicationLinks = ({ sidebar }: Props) => {
         return (
           <Link key={key} href={href}>
             <Button
-              className={clsx(
+              variant="unset"
+              className={cx(
                 "w-full justify-center",
                 sidebar ? "mx-2" : "mx-1",
                 isActiveRoute

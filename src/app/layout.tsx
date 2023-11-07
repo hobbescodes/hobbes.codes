@@ -1,8 +1,8 @@
-import { clsx } from "clsx";
 import { GeistSans } from "geist/font";
 
 import { Layout } from "components/layout";
 import { ThemeProvider } from "components/providers";
+import { cx } from "lib/util";
 
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -21,7 +21,7 @@ interface Props {
 const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
-      <body className={clsx(GeistSans.className, "bg-background-primary text-foreground-primary")}>
+      <body className={cx(GeistSans.className, "bg-background-primary text-foreground-primary")}>
         <ThemeProvider>
           <Layout>{children}</Layout>
         </ThemeProvider>
