@@ -21,17 +21,16 @@ const textarea = cva({
 
 export interface Props extends ComponentProps<typeof ark.textarea>, VariantProps<typeof textarea> {
   label?: string;
-  isRequired?: boolean;
 }
 
-const Textarea = ({ label, isRequired, disabled, className, size, rows = 5, ...rest }: Props) => {
+const Textarea = ({ label, required, disabled, className, size, rows = 5, ...rest }: Props) => {
   const classes = cx(textarea({ size }), disabled && "opacity-40 cursor-not-allowed");
 
   return (
     <div className="flex w-full flex-col gap-1">
       <div className="flex items-center gap-1">
         {label && <label className="text-accent-emphasized">{label}</label>}
-        {isRequired && (
+        {required && (
           <em className="whitespace-nowrap text-xs text-brand-primary-500" role="alert">
             *Required
           </em>

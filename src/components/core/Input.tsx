@@ -23,17 +23,16 @@ export interface Props
   extends Omit<ComponentProps<typeof ark.input>, "size">,
     VariantProps<typeof input> {
   label?: string;
-  isRequired?: boolean;
 }
 
-const Input = ({ label, isRequired, disabled, className, size, ...rest }: Props) => {
+const Input = ({ label, required, disabled, className, size, ...rest }: Props) => {
   const classes = cx(input({ size }), disabled && "opacity-40 cursor-not-allowed");
 
   return (
     <div className="flex w-full flex-col gap-1">
       <div className="flex items-center gap-1">
         {label && <label className="text-accent-emphasized">{label}</label>}
-        {isRequired && (
+        {required && (
           <em className="whitespace-nowrap text-xs text-brand-primary-500" role="alert">
             *Required
           </em>

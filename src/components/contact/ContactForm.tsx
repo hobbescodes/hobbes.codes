@@ -6,11 +6,13 @@ import { optional, string, minLength, email } from "valibot";
 
 import { Button, Input, Textarea } from "components/core";
 
+import type { User } from "@supabase/supabase-js";
+
 const FIELDS = [
   {
     name: "email",
     label: "Email Address",
-    placeholder: "john.doe@example.com",
+    placeholder: "you@example.com",
     validationSchema: string([email("Invalid email address.")]),
     type: "input",
     isRequired: true,
@@ -38,7 +40,11 @@ interface ContactForm {
   message?: string;
 }
 
-const ContactForm = () => {
+interface Props {
+  user: User;
+}
+
+const ContactForm = ({ user }: Props) => {
   const { Field, Provider, Subscribe } = useForm<ContactForm, typeof valibotValidator>();
 
   return (
@@ -56,6 +62,7 @@ const ContactForm = () => {
               {(field) => {
                 const onChangeError = field.getMeta().errorMap.onChange;
                 const InputField = type === "input" ? Input : Textarea;
+                const defaultValue = name === "email" ? user.email ?? "" : "";
 
                 return (
                   <div className="relative">
@@ -63,9 +70,9 @@ const ContactForm = () => {
                       name={name}
                       label={label}
                       placeholder={placeholder}
-                      isRequired={isRequired}
+                      required={isRequired}
                       //@ts-ignore due to mapping of FIELDS, error is thrown, but it works
-                      value={field.state.value ?? ""}
+                      value={field.state.value ?? defaultValue}
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={() => {
                         if (onChangeError) {
