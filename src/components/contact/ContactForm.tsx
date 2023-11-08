@@ -43,7 +43,7 @@ const ContactForm = () => {
 
   return (
     <Provider>
-      <form className="w-full max-w-lg" autoComplete="off">
+      <form className="w-full max-w-lg duration-1000 animate-in fade-in-0" autoComplete="off">
         <div className="flex flex-col gap-4">
           {FIELDS.map(({ name, label, placeholder, validationSchema, type }) => (
             <Field
