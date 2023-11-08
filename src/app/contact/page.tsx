@@ -1,7 +1,5 @@
-import { notFound } from "next/navigation";
-
 const ContactPage = () => {
-  return notFound();
+  return <div className="flex w-full items-center justify-center">Contact Page</div>;
 };
 
 export default ContactPage;
