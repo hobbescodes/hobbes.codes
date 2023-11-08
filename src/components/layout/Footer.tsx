@@ -2,7 +2,7 @@ import { Button, Link } from "components/core";
 import { NAVIGATION_LINKS } from "lib/data";
 
 const Footer = () => (
-  <footer className="flex w-full flex-col items-center justify-center gap-2 border-t border-accent-subtle bg-background-primary py-4">
+  <footer className="flex w-full flex-col items-center justify-center gap-2 bg-background-primary py-4">
     <div className="flex gap-2">
       {Object.entries(NAVIGATION_LINKS.socials).map(([key, { label, icon: Icon, href }]) => (
         <Link key={key} href={href} isExternal>
