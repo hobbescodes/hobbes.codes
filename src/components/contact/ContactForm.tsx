@@ -2,8 +2,9 @@
 
 import { useForm } from "@tanstack/react-form";
 import { valibotValidator } from "@tanstack/valibot-form-adapter";
-import { Button, Input, Textarea } from "components/core";
 import { optional, string, minLength, email } from "valibot";
+
+import { Button, Input, Textarea } from "components/core";
 
 const FIELDS = [
   {
@@ -62,7 +63,7 @@ const ContactForm = () => {
                       name={name}
                       label={label}
                       placeholder={placeholder}
-                      //@ts-ignore
+                      //@ts-ignore due to mapping of FIELDS, error is thrown, but it works
                       value={field.state.value ?? ""}
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={() => {
