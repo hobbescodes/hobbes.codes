@@ -2,7 +2,7 @@ import { ContactForm } from "components/contact";
 
 const ContactPage = () => {
   return (
-    <div className="flex w-full items-center justify-center">
+    <div className="mx-8 flex w-full items-center justify-center">
       <ContactForm />
     </div>
   );
