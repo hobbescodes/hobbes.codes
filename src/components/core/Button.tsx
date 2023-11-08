@@ -9,7 +9,7 @@ const button = cva({
     variant: {
       primary: "gap-2 bg-brand-primary-500 hover:bg-brand-primary-500/80 text-foreground-accent",
       outline:
-        "gap-2 border border-brand-primary-500 bg-background-primary hover:bg-accent-subtle text-brand-primary-500",
+        "gap-2 border border-brand-primary-500 bg-background-primary hover:bg-accent-subtle/40 text-brand-primary-500",
       unset: null,
     },
     size: {
