@@ -38,7 +38,7 @@ const Button = ({ children, isLoading, size, variant, isDisabled, className, ...
   const classes = cx(
     button({ variant, size }),
     isDisabled ? "opacity-40 cursor-not-allowed" : "cursor-pointer",
-    isLoading && "animate-pulse",
+    isLoading && "animate-pulse duration-1000",
   );
 
   return (

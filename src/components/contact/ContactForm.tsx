@@ -8,6 +8,14 @@ import { Button, Input, Textarea } from "components/core";
 
 const FIELDS = [
   {
+    name: "email",
+    label: "Email Address",
+    placeholder: "john.doe@example.com",
+    validationSchema: string([email("Invalid email address.")]),
+    type: "input",
+    isRequired: true,
+  },
+  {
     name: "name",
     label: "Name",
     placeholder: "John Doe",
@@ -15,20 +23,12 @@ const FIELDS = [
     type: "input",
   },
   {
-    name: "email",
-    label: "Email Address",
-    placeholder: "john.doe@example.com",
-    validationSchema: optional(string([email("Invalid email address.")])),
-    type: "input",
-  },
-  {
     name: "message",
     label: "Message",
     placeholder: "Hello, I would like to connect with you...",
-    validationSchema: optional(
-      string([minLength(10, "Message must be at least 10 characters long.")]),
-    ),
+    validationSchema: string([minLength(10, "Message must be at least 10 characters long.")]),
     type: "textarea",
+    isRequired: true,
   },
 ];
 
@@ -45,7 +45,7 @@ const ContactForm = () => {
     <Provider>
       <form className="w-full max-w-lg duration-1000 animate-in fade-in-0" autoComplete="off">
         <div className="flex flex-col gap-4">
-          {FIELDS.map(({ name, label, placeholder, validationSchema, type }) => (
+          {FIELDS.map(({ name, label, placeholder, validationSchema, type, isRequired }) => (
             <Field
               key={name}
               name={name}
@@ -63,6 +63,7 @@ const ContactForm = () => {
                       name={name}
                       label={label}
                       placeholder={placeholder}
+                      isRequired={isRequired}
                       //@ts-ignore due to mapping of FIELDS, error is thrown, but it works
                       value={field.state.value ?? ""}
                       onChange={(e) => field.handleChange(e.target.value)}
@@ -87,7 +88,7 @@ const ContactForm = () => {
           ))}
         </div>
         <Subscribe>
-          {({ canSubmit, values }) => {
+          {({ canSubmit, isSubmitting, values }) => {
             const { name, email, message } = values;
 
             const isFormValid = name && email && message;
@@ -99,8 +100,9 @@ const ContactForm = () => {
                   size="lg"
                   className="disabled:hover:bg-primary-500 w-full justify-center"
                   isDisabled={!isFormValid || !canSubmit}
+                  isLoading={isSubmitting}
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
               </div>
             );
