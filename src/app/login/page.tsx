@@ -1,4 +1,4 @@
-import { signIn } from "app/actions";
+import { signIn, signUp } from "app/actions";
 import { Button, Input } from "components/core";
 
 interface Props {
@@ -18,9 +18,20 @@ const LoginPage = ({ searchParams }: Props) => {
           placeholder="you@example.com"
           required
           autoComplete="off"
+        />
+        <Input
+          label="Password"
+          name="password"
+          placeholder="••••••••"
+          required
+          type="password"
+          autoComplete="off"
           className="mb-6"
         />
         <Button className="justify-center">Sign In</Button>
+        <Button formAction={signUp} variant="outline" className="justify-center">
+          Sign Up
+        </Button>
         {searchParams?.message && (
           <p className="mt-4 p-4 text-center text-brand-primary-500">{searchParams.message}</p>
         )}

@@ -8,19 +8,51 @@ export const signIn = async (formData: FormData) => {
 
   const origin = headers().get("origin");
   const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
   const cookieStore = cookies();
   const supabase = createServerClient(cookieStore);
 
-  const { error } = await supabase.auth.signInWithOtp({
+  const { error } = await supabase.auth.signInWithPassword({
     email,
-    options: {
-      emailRedirectTo: `${origin}/auth/confirm`,
-    },
+    password,
   });
 
   if (error) {
     return redirect(`${origin}/login?message=Could not authenticate user`);
   }
 
-  return redirect(`${origin}/login?message=Check email to continue sign in process`);
+  return redirect(`${origin}/contact`);
+};
+
+export const signUp = async (formData: FormData) => {
+  "use server";
+
+  const origin = headers().get("origin");
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: `${origin}/auth/callback`,
+    },
+  });
+
+  if (error) {
+    return redirect("/login?message=Could not authenticate user");
+  }
+
+  return redirect("/login?message=Check email to continue sign in process");
+};
+
+export const signOut = async () => {
+  "use server";
+
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
+  await supabase.auth.signOut();
+  return redirect("/");
 };
