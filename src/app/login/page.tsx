@@ -1,11 +1,24 @@
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+
 import { signIn, signUp } from "app/actions";
 import { Button, Input } from "components/core";
+import { createServerClient, getRedirectURL } from "lib/util/supabase";
 
 interface Props {
   searchParams: { message: string };
 }
 
-const LoginPage = ({ searchParams }: Props) => {
+const LoginPage = async ({ searchParams }: Props) => {
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (session) redirect(`${getRedirectURL()}/contact`);
+
   return (
     <div className="mx-8 flex w-full items-center justify-center">
       <form
