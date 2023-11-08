@@ -6,7 +6,7 @@ import type { VariantProps } from "cva";
 import type { ComponentProps } from "react";
 
 const input = cva({
-  base: "rounded-md border border-foreground-muted bg-background-primary caret-brand-primary-500 placeholder:text-foreground-muted transition-colors duration-300 focus:outline-primary-500",
+  base: "w-full rounded-md border border-accent-subtle bg-background-primary caret-brand-primary-500 placeholder:text-foreground-muted transition-colors duration-300 focus:outline-brand-primary-500",
   variants: {
     size: {
       sm: "px-2 py-1 text-sm",
@@ -28,15 +28,17 @@ export interface Props
 const Input = ({ label, disabled, className, size, ...rest }: Props) => {
   const classes = cx(input({ size }), disabled && "opacity-40 cursor-not-allowed");
 
-  <div className="flex flex-col gap-1">
-    {label && <label className="text-sm">{label}</label>}
-    <ark.input
-      className={cx(classes, className)}
-      disabled={disabled}
-      aria-disabled={disabled}
-      {...rest}
-    />
-  </div>;
+  return (
+    <div className="flex w-full flex-col gap-1">
+      {label && <label className="text-accent-emphasized">{label}</label>}
+      <ark.input
+        className={cx(classes, className)}
+        disabled={disabled}
+        aria-disabled={disabled}
+        {...rest}
+      />
+    </div>
+  );
 };
 
 export default Input;
