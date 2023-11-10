@@ -7,9 +7,10 @@ const button = cva({
   base: "flex font-medium items-center rounded-md transition-colors duration-300",
   variants: {
     variant: {
-      primary: "gap-2 bg-brand-primary-500 hover:bg-brand-primary-500/80 text-foreground-accent",
+      primary:
+        "gap-2 bg-brand-primary-500 enabled:hover:bg-brand-primary-500/80 text-foreground-accent",
       outline:
-        "gap-2 border border-brand-primary-500 bg-inherit dark:hover:bg-brand-primary-950 hover:bg-brand-primary-50 text-brand-primary-500",
+        "gap-2 border border-brand-primary-500 bg-background-primary enabled:hover:bg-accent-subtle/40 text-brand-primary-500",
       unset: null,
     },
     size: {
@@ -38,7 +39,7 @@ const Button = ({ children, isLoading, size, variant, isDisabled, className, ...
   const classes = cx(
     button({ variant, size }),
     isDisabled ? "opacity-40 cursor-not-allowed" : "cursor-pointer",
-    isLoading && "animate-pulse",
+    isLoading && "animate-pulse duration-1000",
   );
 
   return (

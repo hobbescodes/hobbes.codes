@@ -6,7 +6,7 @@ import { Button, Link } from "components/core";
 const GlobalNotFound = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-12">
-      <div className="text-brand-primary-500/50 text-8xl font-extrabold">404</div>
+      <div className="text-8xl font-extrabold text-brand-primary-500/50">404</div>
       <div className="flex max-w-lg flex-col items-center gap-4">
         <p className="text-2xl font-semibold">Page Not Found</p>
         <p className="text-center opacity-40">

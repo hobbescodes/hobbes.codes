@@ -21,11 +21,7 @@ const Layout = ({ children }: Props) => {
           className="absolute inset-y-0 right-0 z-background w-full bg-accent-subtle/20 clip-path-background"
           aria-hidden="true"
         />
-        <div
-          className="absolute inset-y-0 right-0 z-background -mt-0.5 w-full bg-accent-subtle clip-path-border"
-          aria-hidden="true"
-        />
-        <main className="mx-auto flex w-full max-w-6xl items-center justify-center">
+        <main className="mx-auto flex w-full max-w-6xl items-center justify-center py-8">
           {children}
         </main>
       </div>

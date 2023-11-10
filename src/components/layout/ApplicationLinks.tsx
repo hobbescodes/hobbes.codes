@@ -27,9 +27,8 @@ const ApplicationLinks = ({ sidebar }: Props) => {
                 "w-full justify-center",
                 sidebar ? "mx-2" : "mx-1",
                 isActiveRoute
-                  ? "bg-accent-subtle"
-                  : "hover:bg-brand-primary-300 dark:hover:bg-brand-primary-900",
-                isDisabled && "bg-inherit hover:bg-inherit dark:hover:bg-inherit",
+                  ? "bg-accent-subtle/40"
+                  : "enabled:hover:bg-brand-primary-300 enabled:dark:hover:bg-brand-primary-900",
               )}
             >
               {label}
