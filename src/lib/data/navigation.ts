@@ -23,7 +23,6 @@ const NAVIGATION_LINKS: NavigationGroup = {
     about: {
       label: "About",
       href: "/about",
-      isDisabled: true,
     },
     projects: {
       label: "Projects",
