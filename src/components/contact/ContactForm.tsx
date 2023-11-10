@@ -50,7 +50,7 @@ const ContactForm = ({ user }: Props) => {
   return (
     <Provider>
       <form className="w-full max-w-lg duration-1000 animate-in fade-in-0" autoComplete="off">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-6 sm:gap-4">
           {FIELDS.map(({ name, label, placeholder, validationSchema, type, isRequired }) => (
             <Field
               key={name}
@@ -82,7 +82,7 @@ const ContactForm = ({ user }: Props) => {
                     />
                     {onChangeError && (
                       <em
-                        className="absolute right-0 top-2 whitespace-nowrap text-xs text-red-500"
+                        className="absolute -bottom-4 right-0 whitespace-nowrap text-xs text-red-500 sm:top-2"
                         role="alert"
                       >
                         *{onChangeError}
