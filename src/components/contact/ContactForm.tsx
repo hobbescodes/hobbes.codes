@@ -71,6 +71,7 @@ const ContactForm = ({ user }: Props) => {
                       label={label}
                       placeholder={placeholder}
                       required={isRequired}
+                      disabled={name === "email"}
                       //@ts-ignore due to mapping of FIELDS, error is thrown, but it works
                       value={field.state.value ?? defaultValue}
                       onChange={(e) => field.handleChange(e.target.value)}

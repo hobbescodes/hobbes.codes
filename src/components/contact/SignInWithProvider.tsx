@@ -28,8 +28,9 @@ const SignInWithGithub = ({ provider, icon: Icon }: Props) => {
 
     if (error) redirect(`${origin}/login?message=Could not authenticate user`);
   };
+
   return (
-    <Button formAction={signInWithProvider} className="w-full max-w-xs justify-center">
+    <Button size="lg" formAction={signInWithProvider} className="w-full max-w-xs justify-center">
       <Icon className="mr-2" />
       {providerLabel}
     </Button>
