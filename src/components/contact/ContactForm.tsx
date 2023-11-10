@@ -99,7 +99,7 @@ const ContactForm = ({ user }: Props) => {
           {({ canSubmit, isSubmitting, values }) => {
             const { name, email, message } = values;
 
-            const isFormValid = name && email && message;
+            const isFormValid = name && email && message && canSubmit;
 
             return (
               <div className="relative mt-10 flex flex-col items-center gap-2">
@@ -107,10 +107,13 @@ const ContactForm = ({ user }: Props) => {
                   type="submit"
                   size="lg"
                   className="disabled:hover:bg-primary-500 w-full justify-center"
-                  isDisabled={!isFormValid || !canSubmit}
+                  // TODO: update when messaging database is set up
+                  isDisabled={isFormValid ? true : true}
                   isLoading={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit"}
+                  {/* TODO: swap when messaging database is set up */}
+                  {/* {isSubmitting ? "Submitting..." : "Submit"} */}
+                  Coming Soon...
                 </Button>
               </div>
             );
