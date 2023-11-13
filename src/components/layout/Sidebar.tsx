@@ -18,9 +18,7 @@ const Sidebar = () => {
     }),
   );
 
-  const toggleSidebar = () => {
-    isSidebarOpen ? onCloseSidebar() : onOpenSidebar();
-  };
+  const toggleSidebar = isSidebarOpen ? onCloseSidebar : onOpenSidebar;
 
   const isTablet = useIsTablet();
 
