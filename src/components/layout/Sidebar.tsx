@@ -18,6 +18,10 @@ const Sidebar = () => {
     }),
   );
 
+  const toggleSidebar = () => {
+    isSidebarOpen ? onCloseSidebar() : onOpenSidebar();
+  };
+
   const isTablet = useIsTablet();
 
   const isClient = useIsClient();
@@ -25,7 +29,7 @@ const Sidebar = () => {
   if (!isClient) return null;
 
   return (
-    <Dialog.Root open={isSidebarOpen} onOpen={onOpenSidebar} onClose={onCloseSidebar}>
+    <Dialog.Root open={isSidebarOpen} onOpenChange={toggleSidebar}>
       {({ isOpen }) => (
         <>
           <Dialog.Trigger className="rounded-md p-3 transition-colors duration-300 hover:bg-brand-primary-300 dark:hover:bg-brand-primary-900 md:hidden">
@@ -33,7 +37,7 @@ const Sidebar = () => {
           </Dialog.Trigger>
           <Portal>
             <Dialog.Backdrop className="fixed inset-0 z-backdrop bg-black/50 backdrop-blur-md transition-transform duration-1000" />
-            <Dialog.Container className="fixed bottom-0 right-0 top-[15%] z-dialog flex w-full items-center justify-center sm:top-0 sm:w-80">
+            <Dialog.Positioner className="fixed bottom-0 right-0 top-[15%] z-dialog flex w-full items-center justify-center sm:top-0 sm:w-80">
               <Dialog.Content
                 className={cx(
                   "h-full w-full items-center justify-center overflow-hidden overflow-y-auto rounded-t-xl border border-background-secondary bg-background-primary sm:rounded-none",
@@ -60,7 +64,7 @@ const Sidebar = () => {
                   <ApplicationLinks sidebar />
                 </div>
               </Dialog.Content>
-            </Dialog.Container>
+            </Dialog.Positioner>
           </Portal>
         </>
       )}
