@@ -11,16 +11,16 @@ import "@theme-toggles/react/css/Expand.css";
  */
 const ThemeSwitch = () => {
   const isClient = useIsClient();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
-  const toggleTheme = () => (theme === "dark" ? setTheme("light") : setTheme("dark"));
+  const toggleTheme = () => (resolvedTheme === "dark" ? setTheme("light") : setTheme("dark"));
 
   if (!isClient) return <div className="h-8 w-10 p-3" />;
 
   return (
     <Expand
       onToggle={toggleTheme}
-      toggled={theme === "light"}
+      toggled={resolvedTheme === "light"}
       className="rounded-md p-3 transition-colors duration-300 hover:text-brand-primary-500"
     />
   );
