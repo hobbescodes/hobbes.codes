@@ -6,11 +6,7 @@ import { ContactForm } from "components/contact";
 import { Button } from "components/core";
 import { createServerClient, getRedirectURL } from "lib/util/supabase";
 
-interface Props {
-  searchParams: { message: string };
-}
-
-const ContactPage = async ({ searchParams }: Props) => {
+const ContactPage = async () => {
   const cookieStore = cookies();
   const supabase = createServerClient(cookieStore);
 
@@ -28,9 +24,6 @@ const ContactPage = async ({ searchParams }: Props) => {
           Sign Out
         </Button>
       </form>
-      {searchParams?.message && (
-        <p className="mt-4 p-4 text-center text-brand-primary-500">{searchParams.message}</p>
-      )}
     </div>
   );
 };
