@@ -1,6 +1,7 @@
 import { headers, cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
+import { minLength, object, parse, string } from "valibot";
 
 import { EmailTemplate } from "components/contact";
 import { RESEND_API_KEY } from "lib/config/env";
@@ -60,11 +61,22 @@ export const signOut = async () => {
   return redirect("/");
 };
 
-export const sendEmail = async (formData: FormData) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const sendEmail = async (_prevState: any, formData: FormData) => {
   "use server";
 
   const cookieStore = cookies();
   const supabase = createServerClient(cookieStore);
+
+  const contactFormSchema = object({
+    name: string([minLength(3)]),
+    message: string([minLength(10)]),
+  });
+
+  const { name, message } = parse(contactFormSchema, {
+    name: formData.get("name") as string,
+    message: formData.get("message") as string,
+  });
 
   const {
     data: { user },
@@ -81,15 +93,15 @@ export const sendEmail = async (formData: FormData) => {
     to: "hobbes@animareflection.com",
     subject: "Contact Form Submission",
     react: EmailTemplate({
-      name: formData.get("name") as string,
+      name,
       email: user.email as string,
-      message: formData.get("message") as string,
+      message,
     }),
   });
 
   if (error) {
-    return redirect("/contact?message=Could not send email");
+    return { error: true, message: error.message };
   }
 
-  return redirect("/contact?message=Email sent");
+  return { error: false, message: "Email sent successfully!" };
 };

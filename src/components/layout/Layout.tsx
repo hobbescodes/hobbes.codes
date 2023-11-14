@@ -1,5 +1,7 @@
 "use client";
 
+import { Toaster } from "sonner";
+
 import { Footer, Header } from "components/layout";
 import { useCloseSidebarOnRouteChange, useCloseSidebarOnWindowResize } from "lib/hooks";
 
@@ -26,6 +28,7 @@ const Layout = ({ children }: Props) => {
         </main>
       </div>
       <Footer />
+      <Toaster richColors expand closeButton position="top-center" />
     </div>
   );
 };

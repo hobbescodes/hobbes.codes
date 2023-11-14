@@ -2,6 +2,9 @@
 
 import { useForm } from "@tanstack/react-form";
 import { valibotValidator } from "@tanstack/valibot-form-adapter";
+import { useEffect, useState } from "react";
+import { useFormState } from "react-dom";
+import { toast } from "sonner";
 import { string, minLength } from "valibot";
 
 import { Button, Input, Textarea } from "components/core";
@@ -31,16 +34,37 @@ interface ContactForm {
 }
 
 interface Props {
-  sendEmail: (formData: FormData) => void;
+  sendEmail: (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    prevState: any,
+    formData: FormData,
+  ) => Promise<{
+    error: boolean;
+    message: string;
+  }>;
 }
 
 const ContactForm = ({ sendEmail }: Props) => {
+  const [isPending, setIsPending] = useState(false);
+
   const { Field, Provider, Subscribe } = useForm<ContactForm, typeof valibotValidator>();
+
+  const [state, formAction] = useFormState(sendEmail, null);
+
+  useEffect(() => {
+    if (state) {
+      const { error, message } = state;
+
+      error ? toast.error(message) : toast.success(message);
+      setIsPending(false);
+    }
+  }, [state, setIsPending]);
 
   return (
     <Provider>
       <form
-        action={sendEmail}
+        action={formAction}
+        onSubmit={() => setIsPending(true)}
         className="w-full max-w-lg duration-1000 animate-in fade-in-0"
         autoComplete="off"
       >
@@ -89,7 +113,7 @@ const ContactForm = ({ sendEmail }: Props) => {
           ))}
         </div>
         <Subscribe>
-          {({ canSubmit, isSubmitting, values }) => {
+          {({ canSubmit, values }) => {
             const { name, message } = values;
 
             const isFormValid = name && message ? canSubmit : false;
@@ -101,9 +125,9 @@ const ContactForm = ({ sendEmail }: Props) => {
                   size="lg"
                   className="disabled:hover:bg-primary-500 w-full justify-center"
                   isDisabled={!isFormValid}
-                  isLoading={isSubmitting}
+                  isLoading={isPending}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit"}
+                  {isPending ? "Submitting..." : "Submit"}
                 </Button>
               </div>
             );
