@@ -1,6 +1,9 @@
 import { headers, cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Resend } from "resend";
 
+import { EmailTemplate } from "components/contact";
+import { RESEND_API_KEY } from "lib/config/env";
 import { createServerClient } from "lib/util/supabase";
 
 export const signIn = async (formData: FormData) => {
@@ -55,4 +58,38 @@ export const signOut = async () => {
   const supabase = createServerClient(cookieStore);
   await supabase.auth.signOut();
   return redirect("/");
+};
+
+export const sendEmail = async (formData: FormData) => {
+  "use server";
+
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return redirect("/login?message=Could not authenticate user");
+  }
+
+  const resend = new Resend(RESEND_API_KEY);
+
+  const { error } = await resend.emails.send({
+    from: `Contact Form <admin@hobbes.codes>`,
+    to: "hobbes@animareflection.com",
+    subject: "Contact Form Submission",
+    react: EmailTemplate({
+      name: formData.get("name") as string,
+      email: user.email as string,
+      message: formData.get("message") as string,
+    }),
+  });
+
+  if (error) {
+    return redirect("/contact?message=Could not send email");
+  }
+
+  return redirect("/contact?message=Email sent");
 };
