@@ -29,12 +29,7 @@ const Sidebar = () => {
       >
         <MenuIcon />
       </Button>
-      <Dialog.Root
-        open={isSidebarOpen}
-        onOpenChange={({ open }) => {
-          open ? onOpenSidebar() : onCloseSidebar();
-        }}
-      >
+      <Dialog.Root open={isSidebarOpen} onOpenChange={({ open }) => !open && onCloseSidebar()}>
         <Portal>
           <Dialog.Backdrop className="fixed inset-0 z-backdrop bg-black/50 backdrop-blur-md transition-transform duration-1000" />
           <Dialog.Positioner className="fixed bottom-0 right-0 top-[15%] z-dialog flex w-full items-center justify-center sm:top-0 sm:w-80">

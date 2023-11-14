@@ -1,6 +1,10 @@
 import { headers, cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { Resend } from "resend";
+import { minLength, object, parse, string } from "valibot";
 
+import { EmailTemplate } from "components/contact";
+import { RESEND_API_KEY } from "lib/config/env";
 import { createServerClient } from "lib/util/supabase";
 
 export const signIn = async (formData: FormData) => {
@@ -55,4 +59,49 @@ export const signOut = async () => {
   const supabase = createServerClient(cookieStore);
   await supabase.auth.signOut();
   return redirect("/");
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const sendEmail = async (_prevState: any, formData: FormData) => {
+  "use server";
+
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
+
+  const contactFormSchema = object({
+    name: string([minLength(3)]),
+    message: string([minLength(10)]),
+  });
+
+  const { name, message } = parse(contactFormSchema, {
+    name: formData.get("name") as string,
+    message: formData.get("message") as string,
+  });
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return redirect("/login?message=Could not authenticate user");
+  }
+
+  const resend = new Resend(RESEND_API_KEY);
+
+  const { error } = await resend.emails.send({
+    from: `Contact Form <admin@hobbes.codes>`,
+    to: "hobbes@animareflection.com",
+    subject: "Contact Form Submission",
+    react: EmailTemplate({
+      name,
+      email: user.email as string,
+      message,
+    }),
+  });
+
+  if (error) {
+    return { error: true, message: error.message };
+  }
+
+  return { error: false, message: "Email sent successfully!" };
 };

@@ -53,7 +53,7 @@ const LoginForm = ({ signIn, signUp }: Props) => {
                     label={label}
                     name={name}
                     placeholder={placeholder}
-                    //@ts-ignore due to mapping of FIELDS, error is thrown, but it works
+                    //@ts-ignore due to mapping of FIELDS, there is a TS error, but it works
                     value={field.state.value ?? ""}
                     onChange={(e) => field.handleChange(e.target.value)}
                     onBlur={() => {
