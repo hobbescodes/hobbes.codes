@@ -14,9 +14,9 @@ const useCloseSidebarOnRouteChange = () => {
 
   const pathname = usePathname();
 
+  // biome-ignore lint: ignore exaustive-deps rule
   useEffect(() => {
     isSidebarOpen && onCloseSidebar();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 };
 

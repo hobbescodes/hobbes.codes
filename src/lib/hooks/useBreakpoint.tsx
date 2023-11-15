@@ -50,7 +50,7 @@ const useBreakpoint = ({ fallback = "base" }: Options = {}) => {
 
     // clean up listener
     return () => window.removeEventListener("resize", handleResize);
-  }, [windowDimensions.width]);
+  }, [windowDimensions.width, handleResize]);
 
   return breakpoint;
 };

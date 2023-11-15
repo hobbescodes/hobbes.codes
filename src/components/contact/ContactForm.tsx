@@ -35,7 +35,7 @@ interface ContactForm {
 
 interface Props {
   sendEmail: (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint: ignore explicit any rule
     prevState: any,
     formData: FormData,
   ) => Promise<{
@@ -58,7 +58,7 @@ const ContactForm = ({ sendEmail }: Props) => {
       error ? toast.error(message) : toast.success(message);
       setIsPending(false);
     }
-  }, [state, setIsPending]);
+  }, [state]);
 
   return (
     <Provider>
