@@ -1,5 +1,7 @@
+const ROUTES = ["", "/about", "/projects", "/contact", "/login"];
+
 const sitemap = async () => {
-  const routes = ["", "/about", "/projects", "/contact"].map((route) => ({
+  const routes = ROUTES.map((route) => ({
     url: `https://hobbes.codes${route}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));
