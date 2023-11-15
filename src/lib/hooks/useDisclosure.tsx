@@ -21,12 +21,12 @@ const useDisclosure = ({
 
   const onClose = useCallback(() => {
     !isControlled && setIsOpen(false);
-    onCloseOption && onCloseOption();
+    onCloseOption?.();
   }, [isControlled, onCloseOption]);
 
   const onOpen = useCallback(() => {
     !isControlled && setIsOpen(true);
-    onOpenOption && onOpenOption();
+    onOpenOption?.();
   }, [isControlled, onOpenOption]);
 
   const onToggle = useCallback(() => {

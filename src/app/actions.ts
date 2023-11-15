@@ -61,7 +61,7 @@ export const signOut = async () => {
   return redirect("/");
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint: ignore explicit any rule
 export const sendEmail = async (_prevState: any, formData: FormData) => {
   "use server";
 
@@ -89,7 +89,7 @@ export const sendEmail = async (_prevState: any, formData: FormData) => {
   const resend = new Resend(RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
-    from: `Contact Form <admin@hobbes.codes>`,
+    from: "Contact Form <admin@hobbes.codes>",
     to: "hobbes@animareflection.com",
     subject: "Contact Form Submission",
     react: EmailTemplate({
