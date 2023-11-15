@@ -2,27 +2,21 @@
 
 import { useForm } from "@tanstack/react-form";
 import { valibotValidator } from "@tanstack/valibot-form-adapter";
-import { optional, string, minLength, email } from "valibot";
+import { useEffect, useState } from "react";
+import { useFormState } from "react-dom";
+import { toast } from "sonner";
+import { minLength, string } from "valibot";
 
 import { Button, Input, Textarea } from "components/core";
 
-import type { User } from "@supabase/supabase-js";
-
 const FIELDS = [
-  {
-    name: "email",
-    label: "Email Address",
-    placeholder: "you@example.com",
-    validationSchema: string([email("Invalid email address.")]),
-    type: "input",
-    isRequired: true,
-  },
   {
     name: "name",
     label: "Name",
     placeholder: "John Doe",
-    validationSchema: optional(string([minLength(3, "Name must be at least 3 characters long.")])),
+    validationSchema: string([minLength(3, "Name must be at least 3 characters long.")]),
     type: "input",
+    isRequired: true,
   },
   {
     name: "message",
@@ -36,20 +30,44 @@ const FIELDS = [
 
 interface ContactForm {
   name?: string;
-  email?: string;
   message?: string;
 }
 
 interface Props {
-  user: User;
+  sendEmail: (
+    // biome-ignore lint: ignore explicit any rule
+    prevState: any,
+    formData: FormData,
+  ) => Promise<{
+    error: boolean;
+    message: string;
+  }>;
 }
 
-const ContactForm = ({ user }: Props) => {
+const ContactForm = ({ sendEmail }: Props) => {
+  const [isPending, setIsPending] = useState(false);
+
   const { Field, Provider, Subscribe } = useForm<ContactForm, typeof valibotValidator>();
+
+  const [state, formAction] = useFormState(sendEmail, null);
+
+  useEffect(() => {
+    if (state) {
+      const { error, message } = state;
+
+      error ? toast.error(message) : toast.success(message);
+      setIsPending(false);
+    }
+  }, [state]);
 
   return (
     <Provider>
-      <form className="w-full max-w-lg duration-1000 animate-in fade-in-0" autoComplete="off">
+      <form
+        action={formAction}
+        onSubmit={() => setIsPending(true)}
+        className="w-full max-w-lg duration-1000 animate-in fade-in-0"
+        autoComplete="off"
+      >
         <div className="flex flex-col gap-6 sm:gap-4">
           {FIELDS.map(({ name, label, placeholder, validationSchema, type, isRequired }) => (
             <Field
@@ -62,7 +80,6 @@ const ContactForm = ({ user }: Props) => {
               {(field) => {
                 const onChangeError = field.getMeta().errorMap.onChange;
                 const InputField = type === "input" ? Input : Textarea;
-                const defaultValue = name === "email" ? user.email ?? "" : "";
 
                 return (
                   <div className="relative">
@@ -72,8 +89,8 @@ const ContactForm = ({ user }: Props) => {
                       placeholder={placeholder}
                       required={isRequired}
                       disabled={name === "email"}
-                      //@ts-ignore due to mapping of FIELDS, error is thrown, but it works
-                      value={field.state.value ?? defaultValue}
+                      //@ts-ignore due to mapping of FIELDS, there is a TS error, but it works
+                      value={field.state.value ?? ""}
                       onChange={(e) => field.handleChange(e.target.value)}
                       onBlur={() => {
                         if (onChangeError) {
@@ -96,10 +113,10 @@ const ContactForm = ({ user }: Props) => {
           ))}
         </div>
         <Subscribe>
-          {({ canSubmit, isSubmitting, values }) => {
-            const { name, email, message } = values;
+          {({ canSubmit, values }) => {
+            const { name, message } = values;
 
-            const isFormValid = name && email && message && canSubmit;
+            const isFormValid = name && message ? canSubmit : false;
 
             return (
               <div className="relative mt-10 flex flex-col items-center gap-2">
@@ -107,13 +124,10 @@ const ContactForm = ({ user }: Props) => {
                   type="submit"
                   size="lg"
                   className="disabled:hover:bg-primary-500 w-full justify-center"
-                  // TODO: update when messaging database is set up
-                  isDisabled={isFormValid ? true : true}
-                  isLoading={isSubmitting}
+                  isDisabled={!isFormValid}
+                  isLoading={isPending}
                 >
-                  {/* TODO: swap when messaging database is set up */}
-                  {/* {isSubmitting ? "Submitting..." : "Submit"} */}
-                  Coming Soon...
+                  {isPending ? "Submitting..." : "Submit"}
                 </Button>
               </div>
             );

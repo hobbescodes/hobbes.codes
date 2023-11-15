@@ -1,5 +1,4 @@
 import { createServerClient } from "@supabase/ssr";
-//eslint-disable-next-line  @typescript-eslint/consistent-type-imports
 import { cookies } from "next/headers";
 
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from "lib/config/env";
@@ -15,7 +14,7 @@ export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
       set(name: string, value: string, options: CookieOptions) {
         try {
           cookieStore.set({ name, value, ...options });
-        } catch (error) {
+        } catch (_error) {
           // The `set` method was called from a Server Component.
           // This can be ignored if you have middleware refreshing
           // user sessions.
@@ -24,7 +23,7 @@ export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
       remove(name: string, options: CookieOptions) {
         try {
           cookieStore.set({ name, value: "", ...options });
-        } catch (error) {
+        } catch (_error) {
           // The `delete` method was called from a Server Component.
           // This can be ignored if you have middleware refreshing
           // user sessions.

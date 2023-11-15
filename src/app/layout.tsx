@@ -1,4 +1,4 @@
-import { GeistSans } from "geist/font";
+import { GeistSans } from "geist/font/sans";
 
 import { Layout } from "components/layout";
 import { ThemeProvider } from "components/providers";
@@ -43,7 +43,7 @@ interface Props {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={cx(GeistSans.className, "bg-background-primary text-foreground-primary")}>
         <ThemeProvider>
           <Layout>{children}</Layout>

@@ -2,7 +2,7 @@
 
 import { useForm } from "@tanstack/react-form";
 import { valibotValidator } from "@tanstack/valibot-form-adapter";
-import { string, minLength, email } from "valibot";
+import { email, minLength, string } from "valibot";
 
 import { OAuthForm } from "components/contact";
 import { Button, Input } from "components/core";
@@ -53,7 +53,7 @@ const LoginForm = ({ signIn, signUp }: Props) => {
                     label={label}
                     name={name}
                     placeholder={placeholder}
-                    //@ts-ignore due to mapping of FIELDS, error is thrown, but it works
+                    //@ts-ignore due to mapping of FIELDS, there is a TS error, but it works
                     value={field.state.value ?? ""}
                     onChange={(e) => field.handleChange(e.target.value)}
                     onBlur={() => {

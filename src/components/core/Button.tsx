@@ -35,7 +35,16 @@ export interface Props
 /**
  * Core Button component.
  */
-const Button = ({ children, isLoading, size, variant, isDisabled, className, ...rest }: Props) => {
+const Button = ({
+  children,
+  isLoading,
+  size,
+  variant,
+  isDisabled,
+  className,
+  type,
+  ...rest
+}: Props) => {
   const classes = cx(
     button({ variant, size }),
     isDisabled ? "opacity-40 cursor-not-allowed" : "cursor-pointer",
@@ -44,6 +53,7 @@ const Button = ({ children, isLoading, size, variant, isDisabled, className, ...
 
   return (
     <button
+      type={type ?? "button"}
       className={cx(classes, className)}
       disabled={isDisabled || isLoading}
       aria-disabled={isDisabled}
