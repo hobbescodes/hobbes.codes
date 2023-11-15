@@ -1,4 +1,4 @@
-import { headers, cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { minLength, object, parse, string } from "valibot";

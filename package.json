@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "format": "biome format --write .",
-    "lint": "biome lint ./src"
+    "lint": "biome lint src",
+    "check": "biome check --apply-unsafe src"
   },
   "dependencies": {
     "@ark-ui/react": "^1.0.1",

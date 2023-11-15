@@ -2,7 +2,7 @@
 
 import { useForm } from "@tanstack/react-form";
 import { valibotValidator } from "@tanstack/valibot-form-adapter";
-import { string, minLength, email } from "valibot";
+import { email, minLength, string } from "valibot";
 
 import { OAuthForm } from "components/contact";
 import { Button, Input } from "components/core";

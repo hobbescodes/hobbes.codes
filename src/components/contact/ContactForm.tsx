@@ -5,7 +5,7 @@ import { valibotValidator } from "@tanstack/valibot-form-adapter";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
-import { string, minLength } from "valibot";
+import { minLength, string } from "valibot";
 
 import { Button, Input, Textarea } from "components/core";
 
