@@ -32,6 +32,7 @@ const useBreakpoint = ({ fallback = "base" }: Options = {}) => {
     });
   };
 
+  // biome-ignore lint: ignore exaustive-deps rule
   useEffect(() => {
     // attach listener to window `resize` event
     window.addEventListener("resize", handleResize);
@@ -50,7 +51,7 @@ const useBreakpoint = ({ fallback = "base" }: Options = {}) => {
 
     // clean up listener
     return () => window.removeEventListener("resize", handleResize);
-  }, [windowDimensions.width, handleResize]);
+  }, [windowDimensions.width]);
 
   return breakpoint;
 };
