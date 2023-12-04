@@ -33,7 +33,7 @@ const NAVIGATION_LINKS: NavigationGroup = {
     contact: {
       label: "Contact",
       href: "/contact",
-      isDisabled: false,
+      isDisabled: true,
     },
   },
   socials: {
