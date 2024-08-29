@@ -19,7 +19,7 @@ const HomePage = () => {
             >
               Omni LLC
             </Link>
-            , as well as the the CTO of{" "}
+            , as well as the CTO of{" "}
             <Link
               href="https://animareflection.com/"
               isExternal
