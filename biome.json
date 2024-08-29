@@ -25,6 +25,7 @@
     }
   },
   "formatter": {
+    "ignore": [".next"],
     "enabled": true,
     "formatWithErrors": true,
     "lineWidth": 100,
