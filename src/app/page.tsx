@@ -10,7 +10,7 @@ const HomePage = () => {
         <h2 className="text-xl text-accent-emphasized/80">Software Engineer</h2>
         <div className="mt-6 max-w-xl">
           <p className="relative text-lg leading-8 text-foreground-primary text-pretty">
-            I am a fullstack developer with a passion for building things. I am currently an
+            I am a fullstack developer with a passion for building things. I am currently the
             Engineering Manager at{" "}
             <Link
               href="https://omni.dev/"
@@ -18,14 +18,6 @@ const HomePage = () => {
               className="animate-underline relative text-brand-primary-500"
             >
               Omni LLC
-            </Link>
-            , as well as the CTO of{" "}
-            <Link
-              href="https://animareflection.com/"
-              isExternal
-              className="animate-underline relative text-brand-primary-500"
-            >
-              Anima Reflection LLC
             </Link>
             . My passion is in smart contract development, but I have extensive experience in many
             areas of software development.
